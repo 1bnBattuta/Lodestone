@@ -7,7 +7,7 @@
 
 A feature-rich, high-performance network packet capture and analysis tool written in C for Linux systems.
 
-## 🚀 Features
+##  Features
 
 ### Core Capabilities
 - **High-Performance Capture**
@@ -39,7 +39,7 @@ A feature-rich, high-performance network packet capture and analysis tool writte
   - Kernel-level filtering for efficiency
   - Complex filter combinations
 
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -51,7 +51,7 @@ A feature-rich, high-performance network packet capture and analysis tool writte
 - [License](#license)
 - [Authors](#authors)
 
-## 💻 Requirements
+##  Requirements
 
 ### System Requirements
 - **Operating System**: Linux (kernel 2.6.27 or higher)
@@ -68,7 +68,7 @@ A feature-rich, high-performance network packet capture and analysis tool writte
 ### Tested On
 - Arch Linux (latest)
 
-## 📦 Installation
+##  Installation
 
 ### From Source
 
@@ -102,7 +102,7 @@ make clean
 sudo make uninstall
 ````
 
-## 🚀 Quick Start
+##  Quick Start
 ````bash
 # Basic packet capture
 sudo ./bin/Lodestone -i eth0
@@ -120,7 +120,7 @@ sudo ./bin/Lodestone -i eth0 -o capture.pcap
 sudo ./bin/Lodestone -i eth0 -c 1000 -s -d detailed
 ````
 
-## 📖 Usage
+##  Usage
 
 ### Command Line Options
 ````
@@ -224,7 +224,7 @@ sudo ./bin/Lodestone -i eth0 -l packets.json -F json
 sudo ./bin/Lodestone -i eth0 -f "port 53" -l dns.json -F json -q
 ````
 
-## 🔍 Filter Examples
+##  Filter Examples
 
 ### Basic Filters
 ````bash
@@ -273,7 +273,7 @@ sudo ./bin/Lodestone -i eth0 -f "portrange 1000-2000"
 
 See [FILTER_GUIDE.md](docs/FILTER_GUIDE.md) for comprehensive filter documentation.
 
-## 🏗️ Architecture
+##  Architecture
 ````
 ┌─────────────────────────────────────────────────────────┐
 │                    Application Layer                     │
@@ -311,7 +311,7 @@ See [FILTER_GUIDE.md](docs/FILTER_GUIDE.md) for comprehensive filter documentati
                   └──────────────┘
 ````
 
-## 🤝 Contributing
+##  Contributing
 
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
@@ -333,7 +333,7 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 - Machine learning integration
 - Performance optimizations
 
-## 📄 License
+##  License
 
 This project is licensed under the GNU General Public License v3.0 with additional terms for commercial use - see the [LICENSE](LICENSE) file for details.
 
@@ -341,18 +341,18 @@ This project is licensed under the GNU General Public License v3.0 with addition
 
 Commercial use requires explicit written permission. Contact hostilewire@proton.me for licensing inquiries.
 
-## 👥 Authors
+##  Authors
 
 - **Merroun Omar** - *Initial work* - [GitHub Profile](https://github.com/1bnBattuta)
 
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Linux kernel networking stack developers
 - libpcap/tcpdump team
 - All contributors and testers
 
-## 📞 Contact
+##  Contact
 
 - **Issues**: [GitHub Issues](https://github.com/1bnBattuta/Lodestone/issues)
 - **Email**: [hostilewire@proton.me]
