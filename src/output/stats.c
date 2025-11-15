@@ -58,6 +58,8 @@ void stats_update(stats_ctx_t *ctx, const packet_t *pkt) {
         ps->ipv6_packets++;
         // IPv6 addresses are too large
         // TODO: Add tracking or maybe not ?
+    } else if (pkt->arp_pkt) {
+        ps->arp_packets++;
     }
     
     if (pkt->tcp_hdr) {

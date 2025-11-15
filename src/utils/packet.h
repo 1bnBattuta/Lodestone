@@ -20,6 +20,7 @@ typedef struct {
     union {                         // Layer 3
         struct iphdr *ip_hdr; // IPv4
         struct ip6_hdr *ip6_hdr; // IPv6
+        struct arp_packet *arp_pkt;
         void *network_hdr;
     };
     union {                         // Layer 4
@@ -34,6 +35,19 @@ typedef struct {
     uint8_t protocol;                // TCP/UDP/ICMP etc
     uint8_t ip_version;
 } packet_t;
+
+// ARP packet structure (not always in standard headers)
+struct arp_packet {
+    uint16_t hw_type;           // Hardware type (Ethernet = 1)
+    uint16_t proto_type;        // Protocol type (IPv4 = 0x0800)
+    uint8_t hw_addr_len;        // Hardware address length (6 for MAC)
+    uint8_t proto_addr_len;     // Protocol address length (4 for IPv4)
+    uint16_t opcode;            // Operation (1=request, 2=reply)
+    uint8_t sender_hw[6];       // Sender MAC
+    uint8_t sender_proto[4];    // Sender IP
+    uint8_t target_hw[6];       // Target MAC
+    uint8_t target_proto[4];    // Target IP
+} __attribute__((packed));
 
 // Packet operations
 packet_t* packet_create(size_t max_size);

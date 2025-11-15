@@ -49,6 +49,7 @@ void display_packet_hex(display_ctx_t *ctx, const packet_t *pkt, uint64_t pkt_nu
 void display_ethernet_header(display_ctx_t *ctx, const struct ether_header *eth);
 void display_ip_header(display_ctx_t *ctx, const struct iphdr *ip);
 void display_ipv6_header(display_ctx_t *ctx, const struct ip6_hdr *ip6);
+void display_arp_packet(display_ctx_t *ctx, const struct arp_packet *arp);
 void display_tcp_header(display_ctx_t *ctx, const struct tcphdr *tcp);
 void display_udp_header(display_ctx_t *ctx, const struct udphdr *udp);
 void display_icmp_header(display_ctx_t *ctx, const struct icmphdr *icmp);

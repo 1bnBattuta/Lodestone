@@ -234,6 +234,9 @@ void display_packet_detailed(display_ctx_t *ctx, const packet_t *pkt, uint64_t p
     } else if (pkt->ip_version == 6 && pkt->ip6_hdr) {
         fprintf(out, "\n");
         display_ipv6_header(ctx, pkt->ip6_hdr);
+    } else if (pkt->arp_pkt) {
+        fprintf(out, "\n");
+        display_arp_packet(ctx, pkt->arp_pkt);
     }
     
     // Transport layer
@@ -324,6 +327,35 @@ void display_ipv6_header(display_ctx_t *ctx, const struct ip6_hdr *ip6) {
     fprintf(out, "  Source IP: %s\n", src_ip);
     fprintf(out, "  Dest IP: %s\n", dst_ip);
 }
+
+void display_arp_packet(display_ctx_t *ctx, const struct arp_packet *arp){
+    FILE *out = ctx->output;
+
+    set_color(ctx, COLOR_GREEN);
+    fprintf(out, "ARP Packet:\n");
+    reset_color(ctx);
+    fprintf(out, "  Hardware Type: %u\n", ntohs(arp->hw_type));
+    fprintf(out, "  Protocol Type: %0x\n", ntohs(arp->proto_type));
+    fprintf(out, "  Hardware Size: %u\n", arp->hw_addr_len);
+    fprintf(out, "  Protocol Size: %u\n", arp->proto_addr_len);
+    fprintf(out, "  Operation: %u\n", ntohs(arp->opcode));
+    
+    char src_mac[18], dst_mac[18];
+
+    format_mac(arp->sender_hw, src_mac, sizeof(src_mac));
+    format_mac(arp->target_hw, dst_mac, sizeof(dst_mac));
+
+    char src_ip[INET_ADDRSTRLEN];
+    char dst_ip[INET_ADDRSTRLEN];
+    inet_ntop(AF_INET, &arp->sender_proto, src_ip, sizeof(src_ip));
+    inet_ntop(AF_INET, &arp->target_proto, dst_ip, sizeof(dst_ip));
+
+    fprintf(out, "  Sender Hardware Address: %s\n", src_mac);
+    fprintf(out, "  Sender Protocol Address: %s\n", src_ip);
+    fprintf(out, "  Target Hardware Address: %s\n", dst_mac);
+    fprintf(out, "  Target Protocol Address: %s\n", dst_ip);
+}
+
 
 void display_tcp_header(display_ctx_t *ctx, const struct tcphdr *tcp) {
     FILE *out = ctx->output;

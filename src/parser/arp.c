@@ -7,11 +7,8 @@ int parse_arp(packet_t *pkt, const uint8_t *data, size_t len) {
         return PARSE_TRUNCATED;
     }
     
-    // ARP doesn't fit into our normal packet structure perfectly
-    // Store pointer in payload for now
-    pkt->payload = (uint8_t*)data;
-    pkt->payload_len = len;
-    
+    pkt->arp_pkt = (struct arp_packet*)data;
+
     return PARSE_SUCCESS;
 }
 

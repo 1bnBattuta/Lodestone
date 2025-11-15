@@ -52,6 +52,8 @@ int parse_packet_layers(packet_t *pkt) {
             
         case ETH_TYPE_ARP:
             ret = parse_arp(pkt, data, remaining);
+            data += sizeof(struct arp_packet);
+            remaining -= sizeof(struct arp_packet);
             return ret; // ARP has no higher layers
             
         case ETH_TYPE_IPV6:
